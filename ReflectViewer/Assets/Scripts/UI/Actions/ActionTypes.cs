@@ -44,6 +44,7 @@ namespace Unity.Reflect.Viewer.UI
         SetHighlightFilter,
         SetFilterGroup,
         SetViewOption,
+        SetShowIotDataOption,
         SetSkybox,
         SetClimateOption,
         SetSunStudy,

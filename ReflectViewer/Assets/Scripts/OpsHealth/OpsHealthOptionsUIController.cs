@@ -45,7 +45,9 @@ namespace Unity.Reflect.Viewer.UI
 
         void OnShowIotToggleChanged(bool on)
         {
-            // this will be added on “Add an Action to Control and Update UI” section.
+            var data = UIStateManager.current.stateData.opsHealthData;
+            data.showGameObjectsWithIotData = on;
+            UIStateManager.current.Dispatcher.Dispatch(Payload<ActionTypes>.From(ActionTypes.SetViewOption, data));
         }
 
         void OnStateDataChanged(UIStateData data)

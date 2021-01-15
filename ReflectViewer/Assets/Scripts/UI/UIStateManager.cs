@@ -955,6 +955,19 @@ namespace Unity.Reflect.Viewer.UI
                     stateChanged?.Invoke(m_UIStateData);
                     break;
                 }
+                case ActionTypes.SetShowIotDataOption:
+                {
+                    var opsHealthData = (OpsHealthData) payload.Data;
+
+                    if (opsHealthData.showGameObjectsWithIotData != m_UIStateData.opsHealthData.showGameObjectsWithIotData)
+                    {
+                        // Do something here
+                    }
+
+                    m_UIStateData.opsHealthData = opsHealthData;
+                    stateChanged?.Invoke(m_UIStateData);
+                    break;
+                }
                 case ActionTypes.SetSkybox:
                 {
                     var sceneOptionData = (SceneOptionData) payload.Data;
