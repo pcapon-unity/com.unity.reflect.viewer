@@ -961,7 +961,7 @@ namespace Unity.Reflect.Viewer.UI
 
                     if (opsHealthData.showGameObjectsWithIotData != m_UIStateData.opsHealthData.showGameObjectsWithIotData)
                     {
-                        // Do something here
+                        SetShowGameObjectsWithIotData(opsHealthData);
                     }
 
                     m_UIStateData.opsHealthData = opsHealthData;
@@ -1319,6 +1319,30 @@ namespace Unity.Reflect.Viewer.UI
                     break;
                 }
             }
+        }
+
+        private void SetShowGameObjectsWithIotData(OpsHealthData opsHealthData)
+        {
+            // Not optimized, just for testing purposes.
+            var reflectPipeline = GameObject.FindObjectOfType<ReflectPipeline>();
+
+            PipelineAsset pipeline = reflectPipeline.pipelineAsset;
+            if (pipeline.TryGetNode<InstanceConverterNode>(out var instanceConverterNode))
+            {
+                var listener = new GameObjectInput();
+
+                //listener.streamBegin += OnStreamBegin;
+                listener.streamEvent += OnStream;
+                //listener.streamEnd += OnStreamEnd;
+
+                // Connect listener to the InstanceConverterNode's output
+                pipeline.CreateConnection(instanceConverterNode.output, listener);
+            }
+        }
+
+        private void OnStream(SyncedData<GameObject> syncedData, StreamEvent streamEvent)
+        {
+            Debug.LogFormat("Stream Event rec'd");
         }
     }
 }

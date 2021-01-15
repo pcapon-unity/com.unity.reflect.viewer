@@ -47,7 +47,7 @@ namespace Unity.Reflect.Viewer.UI
         {
             var data = UIStateManager.current.stateData.opsHealthData;
             data.showGameObjectsWithIotData = on;
-            UIStateManager.current.Dispatcher.Dispatch(Payload<ActionTypes>.From(ActionTypes.SetViewOption, data));
+            UIStateManager.current.Dispatcher.Dispatch(Payload<ActionTypes>.From(ActionTypes.SetShowIotDataOption, data));
         }
 
         void OnStateDataChanged(UIStateData data)
