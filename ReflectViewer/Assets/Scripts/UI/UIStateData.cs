@@ -26,6 +26,7 @@ namespace Unity.Reflect.Viewer.UI
         GizmoMode = 17,
         InfoSelect = 18,
         DebugOptions = 19,
+        OpsHealthOptions = 20,
     }
     /// <summary>
     /// Defines a global mode for dialog buttons. For example Help Mode, which makes clicking any dialog button open a help dialog.
@@ -147,6 +148,7 @@ namespace Unity.Reflect.Viewer.UI
         public NavigationState navigationState;
         public CameraOptionData cameraOptionData;
         public SceneOptionData sceneOptionData;
+        public OpsHealthData opsHealthData;
         [NonSerialized]
         public Project selectedProjectOption;
         public int projectOptionIndex;
